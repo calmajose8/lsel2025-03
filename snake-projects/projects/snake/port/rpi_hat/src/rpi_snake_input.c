@@ -33,7 +33,7 @@ static int open_evdev(const char *dev_name)
 
 	for (i = 0; i < ndev; i++)
 	{
-		char fname[64];
+		char fname[267];
 		char name[256];
 
 		snprintf(fname, sizeof(fname),

@@ -39,7 +39,7 @@ static int open_fbdev(const char *dev_name)
 
 	for (i = 0; i < ndev; i++)
 	{
-		char fname[64];
+		char fname[261];
 
 		snprintf(fname, sizeof(fname),
 			 "%s/%s", DEV_FB, namelist[i]->d_name);

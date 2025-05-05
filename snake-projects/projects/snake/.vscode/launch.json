@@ -42,7 +42,7 @@
                 "miDebuggerPath": "gdb-multiarch",
             },
             "linux": {
-                "miDebuggerPath": "gdb-multiarch",
+                "miDebuggerPath": "/home/alumno/cross-pi-gcc/bin/aarch64-none-linux-gnu-gcc",
             },
             "osx": {
                 "miDebuggerPath": "/Volumes/GCCBuild/cross-pi-gcc/bin/aarch64-unknown-linux-gnu-gdb",
