@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "native-rpi_hat",
+            "includePath": [
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+        {
+            "name": "cross-rpi_hat 64-bit",
+            "includePath": [
+            ],
+            "defines": [],
+            "compilerPath": "/home/alumno/cross-pi-gcc/bin/aarch64-none-linux-gnu-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+    ],
+    "version": 4
+}

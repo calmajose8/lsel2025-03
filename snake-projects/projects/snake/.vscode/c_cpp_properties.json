@@ -1,0 +1,77 @@
+{
+    "configurations": [
+        {
+            "name": "native-rpi_hat",
+            "includePath": [
+                "${workspaceFolder}/common/**",
+                "${workspaceFolder}/common/include/",
+                "${workspaceFolder}/port/rpi_hat/**",
+                "${workspaceFolder}/port/rpi_hat/include/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+        {
+            "name": "native-linux_stdio",
+            "includePath": [
+                "${workspaceFolder}/common/**",
+                "${workspaceFolder}/common/include/",
+                "${workspaceFolder}/port/linux_stdio/**",
+                "${workspaceFolder}/port/linux_stdio/include/"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+        {
+            "name": "cross-rpi_hat 64-bit",
+            "includePath": [
+                "${workspaceFolder}/common/**",
+                "${workspaceFolder}/common/include/",
+                "${workspaceFolder}/port/rpi_hat/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/alumno/cross-pi-gcc/bin/aarch64-none-linux-gnu-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+        {
+            "name": "cross-linux_stdio 64-bit",
+            "includePath": [
+                "${workspaceFolder}/common/**",
+                "${workspaceFolder}/common/include/",
+                "${workspaceFolder}/port/linux_stdio/**"
+            ],
+            "defines": [],
+            "compilerPath": "/home/alumno/cross-pi-gcc/bin/aarch64-none-linux-gnu-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        },
+        {
+            "name": "cross-stm32_acc_lcd 32-bit",
+            "includePath": [
+                "${workspaceFolder}/common/**",
+                "${workspaceFolder}/common/include/",
+                "${workspaceFolder}/port/stm32_acc_lcd/**",
+                "${workspaceFolder}/../../drivers/**",
+                "${workspaceFolder}/../../drivers/components/Common"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F411xE"
+            ],
+            "compilerPath": "/opt/arm-toolchain-12.2/bin/arm-none-eabi-gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        }
+    ],
+    "version": 4
+}

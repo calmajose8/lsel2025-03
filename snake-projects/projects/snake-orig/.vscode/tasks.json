@@ -1,0 +1,64 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"group": {
+				"kind": "build"
+			},
+			"linux": {
+				"command": "make"
+			},
+			"osx": {
+				"command": "make"
+			},
+			"windows": {
+				"command": "mingw32-make"
+			},
+			"args": [
+				"PREFIX=${input:prefix}
+			]
+		},
+		{
+			"label": "Clean",
+			"command": "make",
+			"options": {
+				"cwd": "${workspaceRoot}"
+			},
+			"linux": {
+				"command": "make"
+			},
+			"osx": {
+				"command": "make"
+			},
+			"windows": {
+				"command": "mingw32-make"
+			},
+			"args": [
+				"clean"
+			]
+		},
+		{
+			"label": "Clean & Re-Build",
+			"dependsOn": [
+				"Clean",
+				"Build"
+			],
+			"dependsOrder": "sequence"
+		},
+	],
+	"inputs": [     
+                {
+                        "id": "prefix",
+                        "type": "pickString",
+                        "description": "Enter the prefix:",
+                        "default": "",
+                        "options": [
+				"",
+				"aarch64-none-linux-gnu-",
+                        ]
+                },
+}

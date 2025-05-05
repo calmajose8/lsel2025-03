@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug native",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe"
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "gdb",
+                "program": "${workspaceFolder}/output/${workspaceFolderBasename}"
+            },
+            "osx": {
+                "MIMode": "lldb",
+                "miDebuggerPath": "${env:HOME}/.vscode/extensions/ms-vscode.cpptools-1.25.3-darwin-arm64/debugAdapters/lldb-mi/bin/lldb-mi", // CHECK THE CORRECT PATH FOR YOUR MACHINE
+            },
+            "program": "${workspaceFolder}/output/${workspaceFolderBasename}"
+              //"preLaunchTask": "Clean & Re-Build"
+        },
+        {
+            "name": "Debug Linux Remote",
+            "type": "cppdbg",
+            "request": "launch",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "MIMode": "gdb",
+            "targetArchitecture": "arm",
+            "windows": {
+                "miDebuggerPath": "gdb-multiarch",
+            },
+            "linux": {
+                "miDebuggerPath": "gdb-multiarch",
+            },
+            "osx": {
+                "miDebuggerPath": "/Volumes/GCCBuild/cross-pi-gcc/bin/aarch64-unknown-linux-gnu-gdb",
+            },
+            "miDebuggerServerAddress": "10.8.43.250:2345",
+            "program": "${workspaceFolder}/output/${workspaceFolderBasename}"
+        }
+    ]
+}
