@@ -71,11 +71,12 @@ snake_display_render(snake_game_t* p_game)
   /* Draw snake body as RED */
 	struct segment_t *seg_i;
 	memset(fb, 0, 128);
-	fb->pixel[p_game->apple.x][p_game->apple.y] = 0xF800;
+	fb->pixel[p_game->apple.x][p_game->apple.y] = 0x001F;
+
 	for(seg_i = p_game->snake.tail; seg_i->next; seg_i=seg_i->next) {
-		fb->pixel[seg_i->x][seg_i->y] = 0x7E0;
+		fb->pixel[seg_i->x][seg_i->y] = 0x07E0;
 	}
-	fb->pixel[seg_i->x][seg_i->y] = 0xFFFF; 
+	fb->pixel[seg_i->x][seg_i->y] = 0xF800; 
 }
 
 int

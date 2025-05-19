@@ -49,6 +49,27 @@ snake_input_update_new_heading (snake_game_t* p_game)
   //DOWN: 's'
   //LEFT: 'a'
   //RIGHT: 'd'
+  while (kbhit() > 0) {
+    char key = getchar();
+
+    switch (key) {
+      case 'w': // UP
+        p_game->new_heading = UP;
+        break;
+      case 's': // DOWN
+        p_game->new_heading = DOWN;
+        break;
+      case 'a': // LEFT
+        p_game->new_heading = LEFT;
+        break;
+      case 'd': // RIGHT
+        p_game->new_heading = RIGHT;
+        break;
+      default:
+        // Ignore other keys
+        break;
+    }
+  }
 
 }
 
