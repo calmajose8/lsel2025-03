@@ -59,6 +59,7 @@
                         "options": [
                                 "rpi_hat",
                                 "linux_stdio",
+								"stm32f411e_acc_lcd"
                         ]
                 },
                 {
@@ -82,6 +83,8 @@
                         "options": [
 				"",
 				"aarch64-none-linux-gnu-",
+				"arm-none-eabi-",
                         ]
-                },
+                }
+			]
 }
