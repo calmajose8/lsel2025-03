@@ -49,8 +49,12 @@ snake_input_update_new_heading (snake_game_t* p_game)
   //DOWN: 's'
   //LEFT: 'a'
   //RIGHT: 'd'
-  while (kbhit() > 0) {
-    char key = getchar();
+  int n = kbhit();
+  char key = 0;
+  while (n > 0) {
+    key = getchar();
+    n--;
+  }
 
     switch (key) {
       case 'w': // UP
@@ -69,8 +73,6 @@ snake_input_update_new_heading (snake_game_t* p_game)
         // Ignore other keys
         break;
     }
-  }
-
 }
 
 void
