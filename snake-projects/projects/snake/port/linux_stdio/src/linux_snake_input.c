@@ -42,13 +42,6 @@ snake_input_update_new_heading (snake_game_t* p_game)
   p_game->new_heading = p_game->snake.heading;
 
   //TODO
-  //kbhit() returns the amount of keys pressed
-  //getchar() reads one of the keys
-  //Read until no key pressed is left
-  //UP: 'w'
-  //DOWN: 's'
-  //LEFT: 'a'
-  //RIGHT: 'd'
   int n = kbhit();
   char key = 0;
   while (n > 0) {

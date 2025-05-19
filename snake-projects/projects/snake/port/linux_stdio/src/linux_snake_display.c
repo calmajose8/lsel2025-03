@@ -11,9 +11,9 @@
 #define MAX_X 16
 #define MAX_Y 16
 
-#define CHAR_APPLE '*'
-#define CHAR_HEAD '@'
-#define CHAR_BODY 'o'
+#define CHAR_APPLE 'o'
+#define CHAR_HEAD '%'
+#define CHAR_BODY '~'
 #define CHAR_EMPTY ' '
 
 struct fb_t {
@@ -32,39 +32,54 @@ clear_screen()
 static void
 print_hlimit(snake_game_t* p_game)
 {
-  // TODO: imprime + , - por cada columna , +
+  printf("+");
+  for (int i = 0; i < p_game->limits.y; i++) {
+    printf("_");
+  }
+  printf("+\n");
 }
-
 
 static void
 print_row(snake_game_t* p_game, int x)
 {
-  // TODO: imprime | , el char que indique el buffer por cada columna , |
+  printf("|");
+  for (int y = 0; y < p_game->limits.y; y++) {
+    printf("%c", fb->pixel[x][y]);
+  }
+  printf("|\n");
 }
 
 void 
 snake_display_render(snake_game_t* p_game)
 {
-  /* Change: Each element is a char */
-  /* - Apple is CHAR_APPLE */
-  /* - Snake head is CHAR_HEAD */
-  /* - Snake body CHAR_BODY */
-  /* - Empty pixels are CHAR_EMPTY */
   struct segment_t *seg_i;
 
   /* Set Blank */
   memset(fb, CHAR_EMPTY, sizeof(struct fb_t));
 
-  //TODO: cambia el valor del elemento del array fb->pixel para la manzana
-  //TODO: cambia el valor del elemento del array fb->pixel para toda la serpiente, empezando por la cola
-  //TODO: cambia el valor del elemento del array fb->pixel para la cabeza de la serpiente
+  // Set the apple
+  fb->pixel[p_game->apple.x][p_game->apple.y] = CHAR_APPLE;
+
+  // Set the snake body
+  for (seg_i = p_game->snake.tail; seg_i->next; seg_i = seg_i->next) {
+    fb->pixel[seg_i->x][seg_i->y] = CHAR_BODY;
+  }
+
+  // Set the snake head
+  fb->pixel[p_game->snake.head.x][p_game->snake.head.y] = CHAR_HEAD;
 
   clear_screen();
 
-  //TODO: imprime limite
-  //TODO: imprime cada fila con limite antes y despues
-  //TODO: imprime limite
+  // Print the top boundary
+  print_hlimit(p_game);
 
+  // Print each row
+  for (int x = 0; x < p_game->limits.x; x++) {
+    print_row(p_game, x);
+  }
+
+  // Print the bottom boundary
+  print_hlimit(p_game);
 
   fflush(NULL);
 }
