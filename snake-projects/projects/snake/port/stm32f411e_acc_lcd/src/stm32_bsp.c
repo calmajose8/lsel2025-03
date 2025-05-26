@@ -46,19 +46,16 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
 // Inicializa I2C (llama a stm32_i2c_init):
 void COMPASSACCELERO_IO_Init (void)
 {
-  return 0;
 }
 
 // Inicializa interrupción de Acelerómetro (click, PE4 y PE5)
 void COMPASSACCELERO_IO_ITConfig (void)
 {
-  return 0;
 }
 
 // Escribe en el acelerómetro byte a byte (configuración)
 void COMPASSACCELERO_IO_Write (uint16_t DeviceAddr, uint8_t RegisterAddr, uint8_t Value)
 {
-  return 0;
 }
 
 // Lee del acelerómetro byte a byte (configuración)
@@ -97,23 +94,19 @@ int lcd_init(void)
 void 
 lcd_reset(void) 
 {
-  return 0;
 }
 
 void 
 lcd_update_screen(void) 
 {
-  return 0;
 }
 
 void lcd_set_cursor(uint8_t x, uint8_t y)
 {
-  return 0;
 }
 
 void lcd_write_char(char ch)
 {
-  return 0;
 }
 
 void ssd1306_Delay(uint32_t ms) {
