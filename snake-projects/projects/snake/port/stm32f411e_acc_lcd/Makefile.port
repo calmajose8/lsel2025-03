@@ -51,7 +51,7 @@ $(HAL_SRC)/stm32f4xx_hal_exti.c
 endif
 
 SOURCES += $(wildcard $(patsubst %,%/*.c, $(PORT)/$(PLATFORM)/src))
-SOURCES += $(COMPONENTS)/lsm303dlhc/lsm303dlhc.c
+SOURCES += $(COMPONENTS)/stm32-lsm303dlhc/lsm303dlhc.c
 COMPONENTS := $(DRIVERS)/components
 
 # ASM sources
