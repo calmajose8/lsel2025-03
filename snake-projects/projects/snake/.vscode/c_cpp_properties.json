@@ -59,7 +59,7 @@
             "includePath": [
                 "${workspaceFolder}/common/**",
                 "${workspaceFolder}/common/include/",
-                "${workspaceFolder}/port/stm32_acc_lcd/**",
+                "${workspaceFolder}/port/stm32f411e_acc_lcd/**",
                 "${workspaceFolder}/../../drivers/**",
                 "${workspaceFolder}/../../drivers/components/Common"
             ],

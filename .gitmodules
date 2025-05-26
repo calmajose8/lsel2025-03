@@ -1,0 +1,12 @@
+[submodule "snake-projects/drivers/components/stm32-lsm303dlhc"]
+	path = snake-projects/drivers/components/stm32-lsm303dlhc
+	url = https://github.com/STMicroelectronics/stm32-lsm303dlhc
+[submodule "snake-projects/drivers/components/stm32-lsm303agr"]
+	path = snake-projects/drivers/components/stm32-lsm303agr
+	url = https://github.com/STMicroelectronics/stm32-lsm303agr
+[submodule "snake-projects/drivers/components/Common"]
+	path = snake-projects/drivers/components/Common
+	url = https://github.com/STMicroelectronics/stm32-bsp-common
+[submodule "snake-projects/drivers/stm32f4xx/STM32F4xx_HAL_Driver"]
+	path = snake-projects/drivers/stm32f4xx/STM32F4xx_HAL_Driver
+	url = https://github.com/STMicroelectronics/stm32f4xx-hal-driver

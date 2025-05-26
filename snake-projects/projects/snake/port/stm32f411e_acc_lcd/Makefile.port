@@ -51,6 +51,7 @@ $(HAL_SRC)/stm32f4xx_hal_exti.c
 endif
 
 SOURCES += $(wildcard $(patsubst %,%/*.c, $(PORT)/$(PLATFORM)/src))
+SOURCES += $(COMPONENTS)/lsm303dlhc/lsm303dlhc.c
 COMPONENTS := $(DRIVERS)/components
 
 # ASM sources
@@ -91,6 +92,11 @@ endif
 
 # Directories with required header files for port files
 INCLUDES += -I$(PORT)/$(PLATFORM)/include
+INCLUDES += -I$(COMPONENTS)/Common
+INCLUDES += -I$(COMPONENTS)/lsm303dlhc
+INCLUDES += -I$(COMPONENTS)/ssd1306
+INCLUDES += -I$(COMPONENTS)/stm32-lsm303agr
+INCLUDES += -I$(COMPONENTS)/stm32-lsm303dlhc
 
 
 #######################################

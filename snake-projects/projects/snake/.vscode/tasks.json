@@ -4,7 +4,10 @@
 		{
 			"label": "Build",
 			"options": {
-				"cwd": "${workspaceRoot}"
+				"cwd": "${workspaceRoot}",
+				"env":{
+					"PATH": "${env:PATH}:/home/alumno/Documentos/arm-gcc/bin"
+				}
 			},
 			"group": {
 				"kind": "build"
