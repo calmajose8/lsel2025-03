@@ -14,5 +14,7 @@ uint16_t bsp_get_accelero_config(void);
 int lcd_init(void);
 void lcd_reset(void);
 void lcd_update_screen(void);
+void lcd_set_cursor(uint8_t x, uint8_t y);
+void lcd_write_char(char ch);
 
 #endif //_STM32_BSP_H

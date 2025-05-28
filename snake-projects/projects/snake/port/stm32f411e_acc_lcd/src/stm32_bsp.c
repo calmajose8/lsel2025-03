@@ -66,10 +66,10 @@ int stm32_i2c_init (void)
     hi2c1.Init.GeneralCallMode = 0;
     hi2c1.Init.NoStretchMode = 0;
 
-    if(HAL_Init() != HAL_OK) {
+    if(HAL_I2C_Init(&hi2c1) != HAL_OK) {
       result = 0;
     } else {
-      result = SystemClock_Config();
+      result = 1;
     }
   }
 
@@ -94,7 +94,6 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
     {
         // Habilitar el reloj para GPIOB e I2C1
         __HAL_RCC_GPIOB_CLK_ENABLE();
-        __HAL_RCC_I2C1_CLK_ENABLE();
 
         // Configurar los pines PB6 (SCL) y PB9 (SDA)
         GPIO_InitStruct.Pin = GPIO_PIN_6 | GPIO_PIN_9;
@@ -103,6 +102,9 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* i2cHandle)
         GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW; // Alta velocidad
         GPIO_InitStruct.Alternate = GPIO_AF4_I2C1; // Función alternativa para I2C1
         HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+        __HAL_RCC_I2C1_CLK_ENABLE();
+
     }
 }
 
@@ -167,36 +169,76 @@ uint16_t bsp_get_accelero_config(void) {
 
 int lcd_init(void)
 {
-  return 0;
+    static int result = 0;
+
+    if (!result) {
+        // Inicializa I2C
+        if (stm32_i2c_init() != 1) {
+            result = 0; // Error en la inicialización de I2C
+        } else {
+            // Inicializa el controlador SSD1306
+            if (ssd1306_Init(&hi2c1) != 0) {
+                result = 0; // Error en la inicialización del LCD
+            } else {
+                result = 1; // Inicialización exitosa
+            }
+        }
+    }
+
+    return result;
 }
 
-void 
-lcd_reset(void) 
+void lcd_reset(void) 
 {
+    // Llena la pantalla con ceros (vacía la pantalla)
+    ssd1306_Fill(0);
+
+    // Actualiza la pantalla para reflejar los cambios
+    ssd1306_UpdateScreen(&hi2c1);
+
+    // Coloca el cursor en el origen (posición 0,0)
+    ssd1306_SetCursor(0, 0);
 }
 
-void 
-lcd_update_screen(void) 
+void lcd_update_screen(void) 
 {
+    // Llama a la función para actualizar la pantalla
+    ssd1306_UpdateScreen(&hi2c1);
 }
+FontDef* myFont = &Font_8x8;
 
 void lcd_set_cursor(uint8_t x, uint8_t y)
 {
+    // Llama a la función ssd1306_SetCursor con los argumentos X e Y
+    ssd1306_SetCursor(y*myFont->FontWidth, x*myFont->FontHeight);
 }
 
 void lcd_write_char(char ch)
 {
+    // Llama a la función ssd1306_WriteChar con la fuente Font_8x8 y el color White
+    ssd1306_WriteChar(ch, *myFont, White);
 }
 
 void ssd1306_Delay(uint32_t ms) {
+  HAL_Delay(ms);
 }
 
 uint8_t ssd1306_WriteCommand(void *hi2c, uint8_t command)
 {
-  return 0;
+    // Escribe un comando en el registro 0x00 del SSD1306
+    if (HAL_I2C_Mem_Write((I2C_HandleTypeDef *)hi2c, SSD1306_I2C_ADDR, 0x00, I2C_MEMADD_SIZE_8BIT, &command, 1, 100) == HAL_OK) {
+        return 0; // Éxito
+    } else {
+        return 1; // Error
+    }
 }
 
 uint8_t ssd1306_WriteData(void *hi2c, uint8_t* data, uint16_t len)
 {
-  return 0;
+    // Escribe datos en el registro 0x40 del SSD1306
+    if (HAL_I2C_Mem_Write((I2C_HandleTypeDef *)hi2c, SSD1306_I2C_ADDR, 0x40, I2C_MEMADD_SIZE_8BIT, data, len, 100) == HAL_OK) {
+        return 0; // Éxito
+    } else {
+        return 1; // Error
+    }
 }

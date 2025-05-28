@@ -52,6 +52,7 @@ endif
 
 SOURCES += $(wildcard $(patsubst %,%/*.c, $(PORT)/$(PLATFORM)/src))
 SOURCES += $(COMPONENTS)/stm32-lsm303dlhc/lsm303dlhc.c
+SOURCES += $(COMPONENTS)/ssd1306/ssd1306.c
 COMPONENTS := $(DRIVERS)/components
 
 # ASM sources
