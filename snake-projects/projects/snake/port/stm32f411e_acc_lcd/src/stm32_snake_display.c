@@ -46,7 +46,7 @@ void snake_display_render(snake_game_t* p_game) {
     lcd_reset();
 
     for (int x = 0; x < p_game->limits.x; x++) {
-        lcd_set_cursor(0, x*8);
+        lcd_set_cursor(x, 0);
         for (int y = 0; y < p_game->limits.y; y++) {
         
             lcd_write_char(fb->pixel[x][y]);
